@@ -73,7 +73,7 @@ const patchAdmin = async (req, res) => {
       const hashedPassword = await bcrypt.hash(changes.password, salt);
       changes.password = hashedPassword;
     }
-
+    console.log(changes);
     const updated = await db("admin")
       .where({ id })
       .update({ ...changes })
