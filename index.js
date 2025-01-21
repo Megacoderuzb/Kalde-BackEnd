@@ -8,8 +8,9 @@ const adminRoutes = require("./src/routes/forAdmin");
 const categoryRoutes = require("./src/routes/categories");
 const productRoutes = require("./src/routes/products");
 const dealersRoutes = require("./src/routes/dealers");
-const newsRoutes = require("./src/routes/news");
 const sendMessageRoutes = require("./src/routes/sendmessage");
+const newsRoutes = require("./src/routes/news");
+const praysRoutes = require("./src/routes/prays");
 
 const app = express();
 
@@ -29,6 +30,7 @@ app.use(dealersRoutes);
 app.use(sendMessageRoutes);
 
 app.use(newsRoutes);
+app.use(praysRoutes);
 
 app.listen(config.port, () => {
   console.log(`Server ${config.port} - portda ishlayapti`);

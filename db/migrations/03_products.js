@@ -14,14 +14,7 @@ exports.up = function (knex) {
     table.text("ru_desc");
     table.text("en_desc");
 
-    table.text("diametr");
-    table.text("ichki_diametr");
-    table.text("razmer");
-    table.text("ichki_uzunlik");
-    table.text("tashqi_uzunlik");
-    table.text("barcode");
-    table.text("price");
-    table.text("soni");
+  
 
     table
       .integer("category_id")
