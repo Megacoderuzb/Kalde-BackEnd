@@ -37,10 +37,8 @@ const getDealers = async (req, res, next) => {
       )
       .groupBy("dealers.id", "images.id");
 
-    console.log(dealers);
     res.json(dealers);
   } catch (error) {
-    console.log("err shu yerdan");
     throw error;
   }
 };
@@ -75,13 +73,10 @@ const showDealers = async (req, res, next) => {
       });
     }
 
-    console.log(dealers.dealers_img_id);
-
     if (dealers.dealers_img_id) {
       let id = dealers.dealers_img_id;
 
       let imgUrl = await db("images").where({ id }).select("image_url");
-      console.log(imgUrl);
 
       return res.status(200).json({
         message: "Добавлено успешно",
@@ -238,9 +233,7 @@ const postDealers = async (req, res, next) => {
 
       dealers_img_id,
     } = req.body;
-    // console.log(dealers);
     if (req.file?.filename) {
-      //  const { filename } = req.file;
       let filename = req.file?.filename;
 
       const image = await db("images")

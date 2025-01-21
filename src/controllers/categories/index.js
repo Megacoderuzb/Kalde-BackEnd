@@ -66,9 +66,7 @@ const showCategories = async (req, res, next) => {
     // console.log(category);
     if (category.img_id) {
       let id = category.img_id;
-      console.log(category.img_id);
       imgUrl = await db("images").where({ id }).select("image_url");
-      console.log(imgUrl);
       return res.status(201).json({
         message: "success",
         data: { ...category, ...imgUrl[0] },
@@ -91,7 +89,6 @@ const patchCategories = async (req, res, next) => {
 
     let oldImgId = "";
     oldImgId = existing.img_id;
-    console.log(oldImgId);
 
     if (!existing) {
       return res.status(404).json({
@@ -176,7 +173,6 @@ const postCategories = async (req, res, next) => {
 
     if (req.file?.filename) {
       const filename = req.file?.filename;
-      console.log(filename);
       let image = null;
       if (filename) {
         image = await db("images")

@@ -60,7 +60,6 @@ const patchAdmin = async (req, res) => {
     const { ...changes } = req.body;
 
     const token = jwt.decode(req.headers.authorization, config.secret);
-    console.log("Bu token", token.id);
 
     const id = token.id;
 
@@ -77,7 +76,6 @@ const patchAdmin = async (req, res) => {
       const hashedPassword = await bcrypt.hash(changes.password, salt);
       changes.password = hashedPassword;
     }
-    console.log(changes);
     const updated = await db("admin")
       .where({ id })
       .update({ ...changes })
@@ -129,7 +127,6 @@ const loginAdmin = async (req, res) => {
         role: existing.role,
       },
     });
-    console.log(existing);
   } catch (error) {
     res.status(400).json({
       error: error.message,
